@@ -1,8 +1,0 @@
-def translate_pygame_event(pygame_event):
-    """
-    Takes a pygame event and returns:
-    - MoveIntentEvent
-    - QuitEvent
-    - None
-    """
-    return None

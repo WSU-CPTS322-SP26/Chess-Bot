@@ -1,4 +1,6 @@
 import pygame
+from ui.MainMenu import MainMenu
+from ui.BoardDisplay import BoardDisplay
 
 def main():
     pygame.init()
@@ -8,26 +10,35 @@ def main():
     pygame.display.set_caption("Chess Bot - CPT_S 322")
 
     clock = pygame.time.Clock()
+
+    menu = MainMenu(screen)
+    board = BoardDisplay(screen)
+
+    mode = "MENU"
     running = True
 
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+    while running: # pygame has started
+        for event in pygame.event.get(): # get option from main menu
+            if mode == "MENU":
+                action = menu.handle_event(event) # check for an event
+                if action in ("PVP", "PVB"): # user wants to play
+                    mode = "GAME"
+                elif action == "QUIT":
+                    running = False
+
+            if event.type == pygame.QUIT: # Window close button
                 running = False
 
-        screen.fill((30,30,30))
-
-        pygame.draw.rect( # rectangle for game element
-            screen,
-            (200, 200, 200),
-            pygame.Rect(300, 250, 200, 80),
-            border_radius=12
-        )
+        if mode == "MENU":
+            menu.draw()
+        elif mode == "GAME":
+            screen.fill((0,0,0))
+            board.draw()
 
         pygame.display.flip()
         clock.tick(60)
 
-    pygame.quit
+    pygame.quit()
         
 
 if __name__ == "__main__":
