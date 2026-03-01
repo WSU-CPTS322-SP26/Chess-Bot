@@ -1,28 +1,30 @@
 import pygame
+import chess
 
-# Constants
-squareSize = 150
-boardSize = 8
-color1 = (235, 235, 208)
-color2 = (119, 149, 86) 
+class BoardDisplay:
+    def __init__(self, screen: pygame.Surface):
+        # Constants
+        self.squareSize = 150
+        self.boardSize = 8
+        self.color1 = (235, 235, 208)
+        self.color2 = (119, 149, 86)
 
-# Initialize Pygame
-pygame.init()
-info = pygame.display.Info()  
-screen = pygame.display.set_mode((info.current_w, info.current_h))
-pygame.display.set_caption("Simple Chess Board")
+        self.screen = screen # passed in by main
 
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-
-    # Draw board
-    for row in range(boardSize):
-        for col in range(boardSize):
-            color = color1 if (row + col) % 2 == 0 else color2
-            pygame.draw.rect(screen, color, (col*squareSize, row*squareSize, squareSize, squareSize))
+    def draw(self):
+        for row in range(self.boardSize):
+            for col in range(self.boardSize):
+                color = self.color1 if (row + col) % 2 == 0 else self.color2
+                pygame.draw.rect(
+                    self.screen,
+                    color,
+                    (
+                        col * self.squareSize,
+                        row * self.squareSize,
+                        self.squareSize,
+                        self.squareSize
+                    )
+                )
 
     pygame.display.flip()
 
