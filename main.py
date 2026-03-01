@@ -39,8 +39,11 @@ def main():
             board = BoardDisplay(screen, game_state)
             board.draw()
 
+            # Game logic here
+            
+
         pygame.display.flip()
-        clock.tick(60)
+        clock.tick(1)
 
     pygame.quit()
         
