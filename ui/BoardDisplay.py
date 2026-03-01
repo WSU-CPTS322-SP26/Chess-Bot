@@ -4,20 +4,18 @@ import chess
 class BoardDisplay:
     def __init__(self, screen: pygame.Surface):
         # Constants
-        self.squareSize = 150
+        self.squareSize = 90
         self.boardSize = 8
         self.color1 = (235, 235, 208)
         self.color2 = (119, 149, 86)
 
         self.screen = screen # passed in by main
 
-        # Fit board to open window
-        w, h = self.screen.get_size()
-        self.squareSize = min(w, h) // self.boardSize
+        # Board dimensions
+        board_px = self.squareSize * self.boardSize
 
-        # Center board
-        self.x_offset = (w - self.squareSize * self.boardSize) // 2
-        self.y_offset = (h - self.squareSize * self.boardSize) // 2
+        # Resize window to fit board exactly
+        self.screen = pygame.display.set_mode((board_px, board_px))
 
     def draw(self):
         for row in range(self.boardSize):
@@ -27,8 +25,8 @@ class BoardDisplay:
                     self.screen,
                     color,
                     (
-                        self.x_offset + col * self.squareSize,
-                        self.y_offset + row * self.squareSize,
+                        col * self.squareSize,
+                        row * self.squareSize,
                         self.squareSize,
                         self.squareSize
                     )

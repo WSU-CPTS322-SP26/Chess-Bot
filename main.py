@@ -12,7 +12,6 @@ def main():
     clock = pygame.time.Clock()
 
     menu = MainMenu(screen)
-    board = BoardDisplay(screen)
 
     mode = "MENU"
     running = True
@@ -23,6 +22,7 @@ def main():
                 action = menu.handle_event(event) # check for an event
                 if action in ("PVP", "PVB"): # user wants to play
                     mode = "GAME"
+                    board = BoardDisplay(screen)
                 elif action == "QUIT":
                     running = False
 
