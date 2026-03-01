@@ -2,13 +2,13 @@ import chess
 
 class GameState:
     def __init__(self):
-        self.board = chess.Board() # pull directly from Python chess
-        self.turn = chess.WHITE # start with white
-        self.move_history = [] # list to keep track of moves
-        self.game_over = False # check for checkmate or stalemate
-
-    def current_player(self):
-        return self.turn
+        self.reset()
+    
+    def reset(self): # put board into initial state
+        self.board = chess.Board()
+        self.turn = chess.WHITE
+        self.move_history = []
+        self.game_over = False
 
     def snapshot(self): # read only view of game
         
