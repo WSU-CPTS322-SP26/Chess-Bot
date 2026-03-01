@@ -1,0 +1,6 @@
+import os
+import chess.engine
+
+ENGINE_PATH = os.environ.get("STOCKFISH_PATH")
+if not ENGINE_PATH:
+    raise RuntimeError("STOCKFISH_PATH not set")

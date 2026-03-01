@@ -1,6 +1,7 @@
 import pygame
 from ui.MainMenu import MainMenu
 from ui.BoardDisplay import BoardDisplay
+from core.GameState import GameState
 
 def main():
     pygame.init()
@@ -22,7 +23,6 @@ def main():
                 action = menu.handle_event(event) # check for an event
                 if action in ("PVP", "PVB"): # user wants to play
                     mode = "GAME"
-                    board = BoardDisplay(screen)
                 elif action == "QUIT":
                     running = False
 
@@ -33,10 +33,17 @@ def main():
             menu.draw()
         elif mode == "GAME":
             screen.fill((0,0,0))
+
+            # make initial board state
+            game_state = GameState() #initialize
+            board = BoardDisplay(screen, game_state)
             board.draw()
 
+            # Game logic here
+            
+
         pygame.display.flip()
-        clock.tick(60)
+        clock.tick(1)
 
     pygame.quit()
         
