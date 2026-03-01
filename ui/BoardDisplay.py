@@ -25,7 +25,3 @@ class BoardDisplay:
                         self.squareSize
                     )
                 )
-
-    pygame.display.flip()
-
-pygame.quit()
