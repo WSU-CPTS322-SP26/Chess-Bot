@@ -11,6 +11,14 @@ class BoardDisplay:
 
         self.screen = screen # passed in by main
 
+        # Fit board to open window
+        w, h = self.screen.get_size()
+        self.squareSize = min(w, h) // self.boardSize
+
+        # Center board
+        self.x_offset = (w - self.squareSize * self.boardSize) // 2
+        self.y_offset = (h - self.squareSize * self.boardSize) // 2
+
     def draw(self):
         for row in range(self.boardSize):
             for col in range(self.boardSize):
@@ -19,8 +27,8 @@ class BoardDisplay:
                     self.screen,
                     color,
                     (
-                        col * self.squareSize,
-                        row * self.squareSize,
+                        self.x_offset + col * self.squareSize,
+                        self.y_offset + row * self.squareSize,
                         self.squareSize,
                         self.squareSize
                     )
