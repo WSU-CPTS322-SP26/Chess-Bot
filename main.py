@@ -6,8 +6,8 @@ from core.GameState import GameState
 def main():
     pygame.init()
 
-    WIDTH, HEIGHT = 800, 600 # window dimensions
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))
+    BOARD_SIZE_PX = 720 # window dimensions
+    screen = pygame.display.set_mode((BOARD_SIZE_PX, BOARD_SIZE_PX))
     pygame.display.set_caption("Chess Bot - CPT_S 322")
 
     clock = pygame.time.Clock()

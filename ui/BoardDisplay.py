@@ -18,7 +18,7 @@ class BoardDisplay:
         board_px = self.squareSize * self.boardSize
 
         # Resize window to fit board exactly
-        self.screen = pygame.display.set_mode((board_px, board_px))
+        # self.screen = pygame.display.set_mode((board_px, board_px))
 
         # add all pieces to board rendering
         self.pieces = {}
