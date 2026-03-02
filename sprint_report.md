@@ -47,16 +47,16 @@ Please review the following code files, which were actively developed during thi
  
 ## Retrospective Summary
 Here's what went well:
-  * Item 1
-  * Item 2
-  * Item x
+  * Functioning board that is fully playable.
+  * Although it's simple it's aesthetically pleasing and easy to understand as well as navigate. 
+  * Move validation is tested and working correctly. 
  
 Here's what we'd like to improve:
-   * Item 1
-   * Item 2
-   * Item x
+   * A way to display moves selected and moves made. Currently all the information about move validation and updates about piece locations are only displayed in the terminal. 
+   * Menu UI.
+   * Bigger window for actual gameplay containing spaces for more information.
   
 Here are changes we plan to implement in the next sprint:
-   * Item 1
-   * Item 2
-   * Item x
+   * Plan to add status update displaying current status eg. Checkmate, check, tie, draw.
+   * Display the move validation information in the same window as the board.
+   * Improved menu UI. Perhaps more color, cleaner fonts, etc. 
