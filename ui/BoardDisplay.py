@@ -92,3 +92,17 @@ class BoardDisplay:
 
             img = self.pieces[(color, name)]
             self.screen.blit(img, (col * self.squareSize, row * self.squareSize))
+        
+    def pixel_to_square(self, pos):
+        x, y = pos
+        column = x // self.squareSize
+        row = y // self.squareSize
+
+        # If its a square in the board
+        if 0 <= column < 8 and 0 <= row < 8:
+            # Pygame (0,0) is TOP-LEFT. 
+            # Chess Rank 0 is BOTTOM. We have to flip the row.
+            rank = 7 - row 
+            file = column
+            return chess.square(file, rank)
+        return None
