@@ -48,7 +48,7 @@ def main():
             board_ui.draw() 
 
         pygame.display.flip()
-        clock.tick(1) 
+        clock.tick(60) 
 
     pygame.quit()
 
