@@ -41,6 +41,16 @@ def main():
                 # Sending actual clicks to controller logic
                 input_handler.process_event(event, controller)
 
+                # return to menu if game is done
+                if input_handler.process_event(event, controller) == "MENU":
+                    
+                    mode = "MENU"
+                    
+                    # reset board for next game
+                    game_state.reset()
+
+                    break
+
         if mode == "MENU":
             menu.draw()
         elif mode == "GAME":
