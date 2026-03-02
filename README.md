@@ -55,6 +55,11 @@ Current Functionality
 TODO: Describe any known issues, bugs, odd behaviors or code smells. 
 Provide steps to reproduce the problem and/or name a file or a function where the problem lives.
 
+When mapping board squares to chess objects:
+
+The pygame library starts its origin in the top left of the board. This created a weird interaction during the initial implementation because squares were being designated from the wrong parts of the board. After understanding this nuance, a small change (rank = 7 - row ) flipped the board vertically allowing the board to start in the correct position when creating square objects. We will have to be mindful of this small detail if we decide to manipulate this implementation in some way.
+
+
 
 ## Contributing
 
