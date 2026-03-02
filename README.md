@@ -71,6 +71,7 @@ Sprint Report: sprint_report.md
 Chess pieces recieved from: https://commons.wikimedia.org/wiki/File:Chess_Pieces_Sprite.svg
 
 TODO: Tag demo video
+Isaac Shim - https://youtu.be/Nu-bxFxZKjs
 
 ## License
 
