@@ -12,6 +12,10 @@ class InputHandler:
         if event.type == pygame.QUIT:
             return "QUIT"
         
+        if controller.check_game_end():
+            # game has ended
+            return "MENU"
+
         # Mouse left click -> square
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             square = self.board_display.pixel_to_square(event.pos)

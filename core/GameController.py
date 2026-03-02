@@ -48,4 +48,16 @@ class GameController:
             # Always reset selection after a move attempt (pass or fail)
             self.selected_square = None
 
+    def check_game_end(self):
+
+        # Check for game end
+        if self.game_state.board.is_game_over():
+            
+            
+            # print the resulting score ex. 0-1, 1-0
+            print(f"{self.game_state.board.result()}")
+
+            # tell input handler that game has ended
+            return True
+
   
