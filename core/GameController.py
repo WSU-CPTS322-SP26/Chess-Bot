@@ -53,7 +53,22 @@ class GameController:
         # Check for game end
         if self.game_state.board.is_game_over():
             
-            
+            # check how game ended
+            match self.game_state.board.outcome():
+                case 1:
+                    print("Checkmate\n")
+                case 2:
+                    print("Stalemate\n")
+                case 3:
+                    print("Insufficient material to checkmate: draw\n")
+                case 4:
+                    print("75 moves reached: automatic draw\n")
+                case 5:
+                    print("Position occurred for 5th time: draw\n")
+                case _:
+                    print(self.game_state.board.outcome()) # termination=<Termination.CHECKMATE: 1>, winner=False)
+                    print("Unknown Status")
+
             # print the resulting score ex. 0-1, 1-0
             print(f"{self.game_state.board.result()}")
 
