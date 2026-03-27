@@ -10,7 +10,8 @@ def main():
     pygame.init()
 
     BOARD_SIZE_PX = 720 
-    screen = pygame.display.set_mode((BOARD_SIZE_PX, BOARD_SIZE_PX))
+    PANEL_WIDTH = 500
+    screen = pygame.display.set_mode((BOARD_SIZE_PX + PANEL_WIDTH, BOARD_SIZE_PX))
     pygame.display.set_caption("Chess Bot - CPT_S 322")
 
     clock = pygame.time.Clock()
@@ -39,10 +40,10 @@ def main():
             
             elif mode == "GAME":
                 # Sending actual clicks to controller logic
-                input_handler.process_event(event, controller)
+                result = input_handler.process_event(event, controller)
 
                 # return to menu if game is done
-                if input_handler.process_event(event, controller) == "MENU":
+                if result == "MENU":
                     
                     mode = "MENU"
                     

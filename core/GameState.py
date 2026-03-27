@@ -3,7 +3,8 @@ import chess
 class GameState:
     def __init__(self):
         self.reset()
-    
+        self.messages = []
+        
     def reset(self): # put board into initial state
         self.board = chess.Board()
         self.turn = chess.WHITE

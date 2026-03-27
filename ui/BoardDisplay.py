@@ -14,6 +14,11 @@ class BoardDisplay:
 
         self.screen = screen # passed in by main
 
+        self.panel_x = self.squareSize * self.boardSize
+        self.panel_width = 500
+        self.panel_color = (40, 40, 40)
+
+        self.font = pygame.font.SysFont("Arial", 24)
         # Board dimensions
         board_px = self.squareSize * self.boardSize
 
@@ -93,12 +98,29 @@ class BoardDisplay:
             img = self.pieces[(color, name)]
             self.screen.blit(img, (col * self.squareSize, row * self.squareSize))
         
+        pygame.draw.rect(
+            self.screen, self.panel_color, 
+            (self.panel_x, 0, self.panel_width, self.squareSize * self.boardSize)
+        )
+        
+        turn = "White's" if self.game_state.board.turn else "Black's"
+        text = f"{turn} turn"
+        text_surface = self.font.render(text, True, (255, 255, 255))
+        self.screen.blit(text_surface, (self.panel_x + 20, 20))
+        
+        MAX_MESSAGES = 1
+        y_offset = 60
+        messages_to_draw = self.game_state.messages[-MAX_MESSAGES:]
+        for msg in messages_to_draw:
+            text_surface = self.font.render(msg, True, (255, 255, 255))
+            self.screen.blit(text_surface, (self.panel_x + 20, y_offset))
+            y_offset = y_offset + 30
     def pixel_to_square(self, pos):
         x, y = pos
         column = x // self.squareSize
         row = y // self.squareSize
 
-        # If its a square in the board
+        # Check if the click is actually on the 8x8 board
         if 0 <= column < 8 and 0 <= row < 8:
             # Pygame (0,0) is TOP-LEFT. 
             # Chess Rank 0 is BOTTOM. We have to flip the row.

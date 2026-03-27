@@ -19,9 +19,9 @@ class GameController:
             # Only allow selection if there is a piece and it's that color's turn
             if piece and piece.color == board.turn:
                 self.selected_square = square
-                print(f"Selected: {chess.square_name(square)}")
+                self.game_state.messages.append(f"Selected: {chess.square_name(square)}")
             else:
-                print("Select a piece of your color.")
+                self.game_state.messages.append("Select a piece of your color.")
 
         else:
             # Create a move object from the first click to the second click
@@ -30,7 +30,7 @@ class GameController:
             # Check if it's in board.legal_moves
             if move in board.legal_moves:
                 board.push(move)
-                print(f"Move Executed: {move.uci()}")
+                self.game_state.messages.append(f"Move Executed: {move.uci()}")
                 
                 # Update the turn in our GameState
                 self.game_state.turn = board.turn
@@ -40,10 +40,10 @@ class GameController:
                 new_piece = board.piece_at(square)
                 if new_piece and new_piece.color == board.turn:
                     self.selected_square = square
-                    print(f"Switched Selection to: {chess.square_name(square)}")
+                    self.game_state.messages.append(f"Switched Selection to: {chess.square_name(square)}")
                     return # Skip the reset below
 
-                print("Invalid Move!")
+                self.game_state.messages.append("Invalid Move!")
             
             # Always reset selection after a move attempt (pass or fail)
             self.selected_square = None
@@ -56,21 +56,21 @@ class GameController:
             # check how game ended
             match self.game_state.board.outcome():
                 case 1:
-                    print("Checkmate\n")
+                    self.game_state.messages.append("Checkmate\n")
                 case 2:
-                    print("Stalemate\n")
+                    self.game_state.messages.append("Stalemate\n")
                 case 3:
-                    print("Insufficient material to checkmate: draw\n")
+                    self.game_state.messages.append("Insufficient material to checkmate: draw\n")
                 case 4:
-                    print("75 moves reached: automatic draw\n")
+                    self.game_state.messages.append("75 moves reached: automatic draw\n")
                 case 5:
-                    print("Position occurred for 5th time: draw\n")
+                    self.game_state.messages.append("Position occurred for 5th time: draw\n")
                 case _:
-                    print(self.game_state.board.outcome()) # termination=<Termination.CHECKMATE: 1>, winner=False)
-                    print("Unknown Status")
+                    self.game_state.messages.append(self.game_state.board.outcome()) # termination=<Termination.CHECKMATE: 1>, winner=False)
+                    self.game_state.messages.append("Unknown Status")
 
             # print the resulting score ex. 0-1, 1-0
-            print(f"{self.game_state.board.result()}")
+            self.game_state.messages.append(f"{self.game_state.board.result()}")
 
             # tell input handler that game has ended
             return True
