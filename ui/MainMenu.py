@@ -16,7 +16,8 @@ class MainMenu:
 
         self.buttons = [
             ("User vs User", pygame.Rect(0, 0, bw, bh)),
-            ("User vs Bot",  pygame.Rect(0, 0, bw, bh)),
+            ("User vs Bot - Stockfish",  pygame.Rect(0, 0, bw, bh)),
+            ("User vs Bot - Homemade", pygame.Rect(0, 0, bw, bh)),
             ("Quit",         pygame.Rect(0, 0, bw, bh)),
         ]
 
