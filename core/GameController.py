@@ -1,7 +1,7 @@
 # Mediates between UI events to update GameState
-
 import chess
 from core.GameState import GameState
+from bots.StockfishBot.StockfishBot import StockfishBot
 
 class GameController:
     def __init__(self, game_state: GameState, mode: str = "PVP", human_color: chess.Color = chess.WHITE):
@@ -10,6 +10,10 @@ class GameController:
         self.human_color = human_color
 
         self.selected_square = None
+
+        self.bot = None
+        if self.mode == "PVBS":
+            self.bot = StockfishBot() # create the bot instance if it is selected
 
     def handle_square_click(self, square: chess.Square):
         board = self.game_state.board

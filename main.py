@@ -33,7 +33,7 @@ def main():
 
             if mode == "MENU":
                 action = menu.handle_event(event)
-                if action in ("PVP", "PVB"):
+                if action in ("PVP", "PVBS", "PVBH"):
                     mode = "GAME"
                 elif action == "QUIT":
                     running = False

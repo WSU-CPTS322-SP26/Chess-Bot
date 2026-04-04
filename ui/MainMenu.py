@@ -37,8 +37,10 @@ class MainMenu:
                 if rect.collidepoint(event.pos):
                     if label == "User vs User":
                         return "PVP"
-                    if label == "User vs Bot":
-                        return "PVB"
+                    if label == "User vs Bot - Stockfish":
+                        return "PVBS"
+                    if label == "User vs Bot - Homemade":
+                        return "PVBH"
                     if label == "Quit":
                         return "QUIT"
         return None
