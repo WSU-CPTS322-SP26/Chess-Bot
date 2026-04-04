@@ -51,27 +51,24 @@ class GameController:
     def check_game_end(self):
 
         # Check for game end
-        if self.game_state.board.is_game_over():
+        if self.game_state.board.outcome():
+
+            # if termination info needed, get here
+            # self.game_state.board.outcome().termination
+
+            # winning color
+            if self.game_state.board.outcome().winner == None:
+                # Draw
+                winning_color = ""
+            elif self.game_state.board.outcome().winner:
+                # white wins
+                winning_color = "White"
+            else:
+                # Black wins
+                winning_color = "Black"
+
+            self.game_state.messages.append(f"{self.game_state.board.result()} {winning_color} by {str(self.game_state.board.outcome().termination).replace("Termination.", "")}")
             
-            # check how game ended
-            match self.game_state.board.outcome():
-                case 1:
-                    self.game_state.messages.append("Checkmate\n")
-                case 2:
-                    self.game_state.messages.append("Stalemate\n")
-                case 3:
-                    self.game_state.messages.append("Insufficient material to checkmate: draw\n")
-                case 4:
-                    self.game_state.messages.append("75 moves reached: automatic draw\n")
-                case 5:
-                    self.game_state.messages.append("Position occurred for 5th time: draw\n")
-                case _:
-                    self.game_state.messages.append(self.game_state.board.outcome()) # termination=<Termination.CHECKMATE: 1>, winner=False)
-                    self.game_state.messages.append("Unknown Status")
-
-            # print the resulting score ex. 0-1, 1-0
-            self.game_state.messages.append(f"{self.game_state.board.result()}")
-
             # tell input handler that game has ended
             return True
 
