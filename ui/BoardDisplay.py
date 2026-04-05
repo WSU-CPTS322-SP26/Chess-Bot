@@ -26,12 +26,13 @@ class BoardDisplay:
         # button constants
         w, h = self.screen.get_size()
         bw, bh = 240, 35
-        start_y = (h / 8) * 7
+        start_y = (h / 16) * 13
         start_x = (self.panel_x / 2) +  self.panel_x
         spacing = 50
 
         # buttons
         self.buttons = [
+            ("Load Game", pygame.Rect(0,0, bw, bh)),
             ("Save Game", pygame.Rect(0,0, bw, bh)),
             ("Return to Menu", pygame.Rect(0, 0, bw, bh)),
         ]
@@ -88,6 +89,8 @@ class BoardDisplay:
             for label, rect in self.buttons:
                 # choose each button accordingly
                 if rect.collidepoint(event.pos):
+                    if label == "Load Game":
+                        return "LOAD"
                     if label == "Save Game":
                         return "SAVE"
                     if label == "Return to Menu":

@@ -58,11 +58,13 @@ def main():
                 # check in-game buttons
                 ingameAction = board_ui.handle_event(event)
 
-                # # user wants to save game as pgn
+                # user wants to save game as pgn
                 if ingameAction == "SAVE":
                     controller.save_game()
+                # user wants to load game as pgn
+                if ingameAction == "LOAD":
+                    controller.load_game()
                     
-
                 # user wants to return to menu
                 if ingameAction == "MENU":
                     
