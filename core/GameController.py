@@ -18,6 +18,10 @@ class GameController:
     def handle_square_click(self, square: chess.Square):
         board = self.game_state.board
 
+        # no human input on bot's turn
+        if self.bot and board.turn != self.human_color:
+            return False
+
         if self.selected_square is None:
             piece = board.piece_at(square)
             # Only allow selection if there is a piece and it's that color's turn
@@ -38,6 +42,10 @@ class GameController:
                 
                 # Update the turn in our GameState
                 self.game_state.turn = board.turn
+
+                #reset selection after successful move
+                self.selected_square = None
+                return True
                 
             else:
                 # If they click another of their own pieces, switch selection instead of failing
@@ -51,6 +59,7 @@ class GameController:
             
             # Always reset selection after a move attempt (pass or fail)
             self.selected_square = None
+            return False
 
     def check_game_end(self):
 
@@ -78,5 +87,25 @@ class GameController:
 
             # tell input handler that game has ended
             return True
+    
+    def make_bot_move(self):
+        if self.bot is None:
+            return False
 
-  
+        if self.game_state.board.is_game_over():
+            return False
+
+        # Only move if it is bot's turn
+        if self.game_state.board.turn != self.human_color:
+            move = self.bot.choose_move(self.game_state.board)
+            self.game_state.board.push(move)
+            self.game_state.turn = self.game_state.board.turn
+            self.game_state.messages.append(f"Stockfish played: {move.uci()}")
+            return True
+
+        return False
+
+    #close the bot
+    def close(self):
+        if self.bot is not None:
+            self.bot.close()

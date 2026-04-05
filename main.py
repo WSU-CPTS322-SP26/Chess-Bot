@@ -19,7 +19,7 @@ def main():
 
     game_state = GameState()
     board_ui = BoardDisplay(screen, game_state)
-    controller = GameController(game_state)
+    controller = None # will create later based on game selection
     input_handler = InputHandler(board_ui)
 
     mode = "MENU"
@@ -33,8 +33,21 @@ def main():
 
             if mode == "MENU":
                 action = menu.handle_event(event)
+
+                #if user selects to begin game
                 if action in ("PVP", "PVBS", "PVBH"):
+                    game_state.reset()
+
+                    #create the specific GameController type based on selection
+                    if action == "PVP":
+                        controller = GameController(game_state, mode="PVP")
+                    elif action == "PVBS":
+                        controller = GameController(game_state, mode="PVBS")
+                    elif action == "PVBH":
+                        controller = GameController(game_state, mode="PVBH")
+
                     mode = "GAME"
+
                 elif action == "QUIT":
                     running = False
             
@@ -46,17 +59,19 @@ def main():
                 if result == "MENU":
                     
                     mode = "MENU"
-                    
                     # reset board for next game
                     game_state.reset()
-
                     break
 
         if mode == "MENU":
             menu.draw()
         elif mode == "GAME":
+            if controller:
+                controller.make_bot_move()
+                controller.check_game_end()
+
             screen.fill((0,0,0))
-            board_ui.draw() 
+            board_ui.draw()
 
         pygame.display.flip()
         clock.tick(60) 
