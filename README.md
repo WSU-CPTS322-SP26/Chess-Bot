@@ -73,12 +73,13 @@ The pygame library starts its origin in the top left of the board. This created 
 
 ## Additional Documentation
 
-Sprint Report: sprint_report.md
+Sprint Report 2: sprint_report2.md
 
 Chess pieces recieved from: https://commons.wikimedia.org/wiki/File:Chess_Pieces_Sprite.svg
 
 Demo Video
 Sprint 1: Isaac Shim - https://youtu.be/Nu-bxFxZKjs
+Sprint 2: Lyndell Martin, Johnny Huang - https://youtu.be/6S5otcZksos
 
 ## License
 
