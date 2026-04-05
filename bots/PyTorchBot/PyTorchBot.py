@@ -35,7 +35,7 @@ class PyTorchBot:
 
     def board_to_tensor(self, board: chess.Board):
         """
-        Very simple encoding:
+        Encoding:
         64 squares, each square is one number:
           white pawn   = 1
           white knight = 2
