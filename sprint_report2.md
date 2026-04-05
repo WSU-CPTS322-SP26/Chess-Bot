@@ -19,17 +19,13 @@ Save game will be put onto next sprint.
  * https://github.com/WSU-CPTS322-SP26/Chess-Bot/issues/13
 
  
- ## Incomplete Issues/User Stories
- Here are links to issues we worked on but did not complete in this sprint:
-   
- * https://github.com/WSU-CPTS322-SP26/Chess-Bot/issues/6
- <<The save game had been harder than expected and does not fully function as intended>>
- * https://github.com/WSU-CPTS322-SP26/Chess-Bot/issues/12
- <<The additional UI appearance was not necessary in the main focus of the bot so this issue has been delayed>>
- * https://github.com/WSU-CPTS322-SP26/Chess-Bot/issues/16
- <<This unexpected game logic issue appeared was unexpected before more games were testted, so we did not have time to look further into this issue>>
- * https://github.com/WSU-CPTS322-SP26/Chess-Bot/issues/17
- <<Load game works but does not have the functionality we would like and needs to be looked over more>>
+## Incomplete Issues/User Stories
+Here are links to issues we worked on but did not complete in this sprint:
+
+   * https://github.com/WSU-CPTS322-SP26/Chess-Bot/issues/6 <<The save game had been harder than expected and does not fully function as intended>>
+   * https://github.com/WSU-CPTS322-SP26/Chess-Bot/issues/12 <<The additional UI appearance was not necessary in the main focus of the bot so this issue has been delayed>>
+   * https://github.com/WSU-CPTS322-SP26/Chess-Bot/issues/16 <<This unexpected game logic issue appeared was unexpected before more games were testted, so we did not have time to look further into this issue>>
+   * https://github.com/WSU-CPTS322-SP26/Chess-Bot/issues/17 <<Load game works but does not have the functionality we would like and needs to be looked over more>>
 
  
 
