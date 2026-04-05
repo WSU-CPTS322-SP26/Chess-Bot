@@ -37,7 +37,9 @@ Note: Machine learning libraries (e.g., PyTorch) are planned for later sprints b
   - git clone https://github.com/WSU-CPTS322-SP26/Chess-Bot
 2. Install required Python packages
   - pip install pygame python-chess
-3. Run the application
+  - pip install torch
+3. Install Stockfish Bot .exe into /bots/StockfishBot/bin
+4. Run the application
   - python main.py
 
 
@@ -45,7 +47,7 @@ Note: Machine learning libraries (e.g., PyTorch) are planned for later sprints b
 
 Current Functionality
 - Application launches successfully via main.py
-- Graphical window rednered using PyGame
+- Graphical window rendered using PyGame
 - Chess board rendered as an 8x8 grid with alternating colors
 - Clean separation between UI rendering and application initialization
 
@@ -75,8 +77,8 @@ Sprint Report: sprint_report.md
 
 Chess pieces recieved from: https://commons.wikimedia.org/wiki/File:Chess_Pieces_Sprite.svg
 
-TODO: Tag demo video
-Isaac Shim - https://youtu.be/Nu-bxFxZKjs
+Demo Video
+Sprint 1: Isaac Shim - https://youtu.be/Nu-bxFxZKjs
 
 ## License
 

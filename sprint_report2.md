@@ -17,7 +17,7 @@ Save game will be put onto next sprint.
 
  ## Incomplete Issues/User Stories
  Here are links to issues we worked on but did not complete in this sprint:
- 
+   
  * https://github.com/WSU-CPTS322-SP26/Chess-Bot/issues/6
  "The save game had been harder than expected and does not fully function as intended"
  * https://github.com/WSU-CPTS322-SP26/Chess-Bot/issues/12
@@ -43,7 +43,7 @@ Please review the following code files, which were actively developed during thi
 
 ## Retrospective Summary
 Here's what went well:
-  * 
+  * Bot with chess.engine was implemented smoothly
   * 
   * 
  
@@ -53,6 +53,6 @@ Here's what we'd like to improve:
    * 
   
 Here are changes we plan to implement in the next sprint:
-   * 
+   * Improved PyTorch chess bot logic
    * 
    * 
