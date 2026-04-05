@@ -18,17 +18,28 @@ Save game will be put onto next sprint.
  ## Incomplete Issues/User Stories
  Here are links to issues we worked on but did not complete in this sprint:
  
- * https://github.com/WSU-CPTS322-SP26/Chess-Bot/issues/3#issue-4009818235 "We decided that as for this sprint, this feature did not need to be completed since it did not add much to the main sprint 1 goal"
+ * https://github.com/WSU-CPTS322-SP26/Chess-Bot/issues/6
+ "The save game had been harder than expected and does not fully function as intended"
+ * https://github.com/WSU-CPTS322-SP26/Chess-Bot/issues/12
+ "The additional UI appearance was not necessary in the main focus of the bot so this issue has been delayed"
+ * https://github.com/WSU-CPTS322-SP26/Chess-Bot/issues/16
+ "This issue appeared very late and was unexpected, so we did not have time to look further into this issue"
+
+ 
 
 
 ## Code Files for Review
 Please review the following code files, which were actively developed during this sprint, for quality:
+* [StockfishBot.py](https://github.com/WSU-CPTS322-SP26/Chess-Bot/blob/main/bots/StockfishBot/StockfishBot.py)
+ * [PyTorchBot.py](https://github.com/WSU-CPTS322-SP26/Chess-Bot/blob/main/bots/PyTorchBot/PyTorchBot.py)
  * [main.py](https://github.com/WSU-CPTS322-SP26/Chess-Bot/blob/main/main.py)
  * [MainMenu.py](https://github.com/WSU-CPTS322-SP26/Chess-Bot/blob/main/ui/MainMenu.py)
  * [InputHandler.py](https://github.com/WSU-CPTS322-SP26/Chess-Bot/blob/main/ui/InputHandler.py)
  * [BoardDisplay.py](https://github.com/WSU-CPTS322-SP26/Chess-Bot/blob/main/ui/BoardDisplay.py)
  * [GameState.py](https://github.com/WSU-CPTS322-SP26/Chess-Bot/blob/main/core/GameState.py)
  * [GameController.py](https://github.com/WSU-CPTS322-SP26/Chess-Bot/blob/main/core/GameState.py)
+ 
+
 
 ## Retrospective Summary
 Here's what went well:
