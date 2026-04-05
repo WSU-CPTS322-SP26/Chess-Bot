@@ -30,6 +30,8 @@ Here are links to issues we worked on but did not complete in this sprint:
    This unexpected game logic issue appeared was unexpected before more games were testted, so we did not have time to look further into this issue
    * https://github.com/WSU-CPTS322-SP26/Chess-Bot/issues/17
    Load game works but does not have the functionality we would like and needs to be looked over more
+   * https://github.com/WSU-CPTS322-SP26/Chess-Bot/issues/18
+   Window is able to be resized but actual game screen does not scale. Was able to figure out scaling, but not how to make the new board actinonable.
 
  
 
@@ -51,14 +53,14 @@ Please review the following code files, which were actively developed during thi
 Here's what went well:
   * Bot with chess.engine was implemented smoothly
   * Load game easily continued play from a pgn file
-  * 
+  * Chess app is still able to fully be played
  
 Here's what we'd like to improve:
    * Thorough chess game logic
-   * 
-   * 
+   * Readbility and flexibility regarding user interface
+   * Expansion of information showed to user
   
 Here are changes we plan to implement in the next sprint:
    * Improved PyTorch chess bot logic
    * Fix outlier game logic
-   * 
+   * Fix window resizing issues
