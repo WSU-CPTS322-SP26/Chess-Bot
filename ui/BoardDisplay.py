@@ -14,11 +14,33 @@ class BoardDisplay:
 
         self.screen = screen # passed in by main
 
+        # panel
         self.panel_x = self.squareSize * self.boardSize
         self.panel_width = 500
         self.panel_color = (40, 40, 40)
 
+        # Fonts
         self.font = pygame.font.SysFont("Arial", 24)
+        self.button_font = pygame.font.SysFont(None, 32) 
+
+        # button constants
+        w, h = self.screen.get_size()
+        bw, bh = 240, 35
+        start_y = (h / 8) * 7
+        start_x = (self.panel_x / 2) +  self.panel_x
+        spacing = 50
+
+        # buttons
+        self.buttons = [
+            ("Save Game", pygame.Rect(0,0, bw, bh)),
+            ("Return to Menu", pygame.Rect(0, 0, bw, bh)),
+        ]
+
+
+        # button placement
+        for i, (_, rect) in enumerate(self.buttons):
+            rect.center = (start_x, start_y + i * spacing)
+
         # Board dimensions
         board_px = self.squareSize * self.boardSize
 
@@ -115,6 +137,12 @@ class BoardDisplay:
             text_surface = self.font.render(msg, True, (255, 255, 255))
             self.screen.blit(text_surface, (self.panel_x + 20, y_offset))
             y_offset = y_offset + 30
+
+        # buttons drawing
+        for label, rect in self.buttons:
+            pygame.draw.rect(self.screen, (80,80,80), rect)
+            text = self.button_font.render(label, True, (255, 255, 255))
+            self.screen.blit(text, text.get_rect(center=rect.center))
     def pixel_to_square(self, pos):
         x, y = pos
         column = x // self.squareSize
