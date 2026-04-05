@@ -30,6 +30,7 @@ class GameController:
                 self.game_state.messages.append(f"Selected: {chess.square_name(square)}")
             else:
                 self.game_state.messages.append("Select a piece of your color.")
+            return False
 
         else:
             # Create a move object from the first click to the second click
@@ -53,7 +54,7 @@ class GameController:
                 if new_piece and new_piece.color == board.turn:
                     self.selected_square = square
                     self.game_state.messages.append(f"Switched Selection to: {chess.square_name(square)}")
-                    return # Skip the reset below
+                    return False
 
                 self.game_state.messages.append("Invalid Move!")
             
@@ -62,12 +63,9 @@ class GameController:
             return False
 
     def check_game_end(self):
-
+        outcome = self.game_state.board.outcome()
         # Check for game end
-        if self.game_state.board.outcome():
-
-            # if termination info needed, get here
-            # self.game_state.board.outcome().termination
+        if outcome:
 
             # winning color
             if self.game_state.board.outcome().winner == None:
