@@ -114,7 +114,8 @@ class GameController:
     def load_game(self):
         # Define folder 
         pgn_folder = Path("data/pgn")
-        file_path = pgn_folder / "MidwayThroughExample.pgn" # replace with incoming file path
+        #file_path = pgn_folder / "MidwayThroughExample.pgn" # replace with incoming file path
+        file_path = pgn_folder / "MidwayTextExample.txt" # replace with incoming file path
 
         # open file of source pgn
         with open(file_path) as pgn: 
@@ -122,15 +123,22 @@ class GameController:
             loaded_game = chess.pgn.read_game(pgn)
 
             # iterate through moves and play them on the board
+            board = loaded_game.board()
             for move in loaded_game.mainline_moves():
-                self.game_state.board(move)
+                board.push(move)
+
+            self.game_state.board = loaded_game.board()
+        self.game_state.messages.append(f"Game Loaded")
 
     
     def save_game(self):
         current_save = chess.pgn.Game()
 
         # save pgn in folder
-        new_pgn = open("/data/pgn", "w", encoding="utf-8")
+        new_pgn = open("data/pgn/local.pgn", "w", encoding="utf-8")
         exporter = chess.pgn.FileExporter(new_pgn)
         current_save.accept(exporter)
+
+        # close file
+        new_pgn.close()
         self.game_state.messages.append(f"Game saved")
