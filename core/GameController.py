@@ -80,7 +80,7 @@ class GameController:
                 # Black wins
                 winning_color = "Black"
 
-            self.game_state.messages.append(f"{self.game_state.board.result()} {winning_color} by {str(self.game_state.board.outcome().termination).replace("Termination.", "")}")
+            self.game_state.messages.append(f"{self.game_state.board.result()} {winning_color} by {str(self.game_state.board.outcome().termination).replace('Termination.', '')}")
             
             # tell input handler that game has ended
             return True
