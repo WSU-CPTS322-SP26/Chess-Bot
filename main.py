@@ -60,7 +60,8 @@ def main():
 
                 # user wants to save game as pgn
                 if ingameAction == "SAVE":
-                    controller.save_game(game_state)
+                    controller.save_game()
+
                 # user wants to load game as pgn
                 if ingameAction == "LOAD":
                     game_state.board = controller.load_game()

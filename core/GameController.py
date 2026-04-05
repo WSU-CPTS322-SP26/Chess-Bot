@@ -11,14 +11,19 @@ class GameController:
         self.game_state = game_state
         self.mode = mode # PVP or PVB
         self.human_color = human_color
+        self.game = chess.pgn.Game()
 
         self.selected_square = None
+
+        self.game.headers["Event"] = "Player Versus Player"
 
         self.bot = None
         if self.mode == "PVBS":
             self.bot = StockfishBot() # create the bot instance if it is selected
+            self.game.headers["Event"] = "Player Versus Stockfish Bot"
         elif self.mode == "PVBH":
             self.bot = PyTorchBot()
+            self.game.headers["Event"] = "Player Versus Homemade Bot"
         
 
     def handle_square_click(self, square: chess.Square):
@@ -47,8 +52,8 @@ class GameController:
                 board.push(move)
                 self.game_state.messages.append(f"Move Executed: {move.uci()}")
                 
-                # update in move history
-                self.game_state.move_history.append(move.uci())
+                # update in Game node (PGN mainline moves)
+                node = self.game.add_variation(chess.Move.from_uci(move.uci()))
 
                 # Update the turn in our GameState
                 self.game_state.turn = board.turn
@@ -119,6 +124,7 @@ class GameController:
         pgn_folder = Path("data/pgn")
         file_path = pgn_folder / "MidwayThroughExample.pgn" # replace with incoming file path
         #file_path = pgn_folder / "MidwayTextExample.txt" # replace with incoming file path
+        #file_path = pgn_folder / "local.pgn"
 
         # open file of source pgn
         with open(file_path) as pgn: 
@@ -135,13 +141,13 @@ class GameController:
         return board
 
     
-    def save_game(self, game_state: GameState):
-        current_save = chess.pgn.Game()
-        #current_save = self.
+    def save_game(self):
+        current_save = self.game
+        
         # save pgn in folder
         with open("data/pgn/local.pgn", "w", encoding="utf-8") as new_pgn:
             exporter = chess.pgn.FileExporter(new_pgn)
-            chess.pgn.Game().accept(exporter)
+            current_save.accept(exporter)
 
 
         self.game_state.messages.append(f"Game saved")
