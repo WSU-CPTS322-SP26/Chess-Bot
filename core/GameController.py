@@ -2,6 +2,7 @@
 import chess
 from core.GameState import GameState
 from bots.StockfishBot.StockfishBot import StockfishBot
+from bots.PyTorchBot.PyTorchBot import PyTorchBot
 import chess.pgn
 from pathlib import Path
 
@@ -16,6 +17,9 @@ class GameController:
         self.bot = None
         if self.mode == "PVBS":
             self.bot = StockfishBot() # create the bot instance if it is selected
+        elif self.mode == "PVBH":
+            self.bot = PyTorchBot()
+        
 
     def handle_square_click(self, square: chess.Square):
         board = self.game_state.board
@@ -68,7 +72,6 @@ class GameController:
         outcome = self.game_state.board.outcome()
         # Check for game end
         if outcome:
-
             # winning color
             if self.game_state.board.outcome().winner == None:
                 # Draw
@@ -97,7 +100,8 @@ class GameController:
             move = self.bot.choose_move(self.game_state.board)
             self.game_state.board.push(move)
             self.game_state.turn = self.game_state.board.turn
-            self.game_state.messages.append(f"Stockfish played: {move.uci()}")
+            bot_name = "Stockfish" if isinstance(self.bot, StockfishBot) else "PyTorch bot"
+            self.game_state.messages.append(f"{bot_name} played: {move.uci()}")
             return True
 
         return False
