@@ -78,6 +78,21 @@ class BoardDisplay:
                 self.pieces[(color, name)] = pygame.transform.smoothscale(
                     img, (self.squareSize, self.squareSize)
                 )
+    
+    def handle_event(self, event):
+        if event.type == pygame.QUIT: # Window close button
+            return "QUIT"
+        
+        # handle user panel button clicks
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            for label, rect in self.buttons:
+                # choose each button accordingly
+                if rect.collidepoint(event.pos):
+                    if label == "Save Game":
+                        return "SAVE"
+                    if label == "Return to Menu":
+                        return "MENU"
+        return None
 
 
     def draw(self): # now have it render pieces from game_state.board
@@ -156,3 +171,4 @@ class BoardDisplay:
             file = column
             return chess.square(file, rank)
         return None
+    

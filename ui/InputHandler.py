@@ -25,4 +25,6 @@ class InputHandler:
                 controller.handle_square_click(square)
             return None
 
+        # check for panel button events
+        
         return None
