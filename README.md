@@ -50,6 +50,7 @@ Current Functionality
 - Graphical window rendered using PyGame
 - Chess board rendered as an 8x8 grid with alternating colors
 - Clean separation between UI rendering and application initialization
+- Chess bot game modes play
 
 
 ## Known Problems
@@ -61,6 +62,7 @@ When mapping board squares to chess objects:
 
 The pygame library starts its origin in the top left of the board. This created a weird interaction during the initial implementation because squares were being designated from the wrong parts of the board. After understanding this nuance, a small change (rank = 7 - row ) flipped the board vertically allowing the board to start in the correct position when creating square objects. We will have to be mindful of this small detail if we decide to manipulate this implementation in some way.
 
+When playing a game, pawn promotion will be considered an invalid move and will not allow piece promotion
 
 
 ## Contributing
@@ -78,7 +80,9 @@ Sprint Report 2: sprint_report2.md
 Chess pieces recieved from: https://commons.wikimedia.org/wiki/File:Chess_Pieces_Sprite.svg
 
 Demo Video
+
 Sprint 1: Isaac Shim - https://youtu.be/Nu-bxFxZKjs
+
 Sprint 2: Lyndell Martin, Johnny Huang - https://youtu.be/6S5otcZksos
 
 ## License
