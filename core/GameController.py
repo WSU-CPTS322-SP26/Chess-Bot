@@ -109,25 +109,26 @@ class GameController:
         if self.bot is not None:
             self.bot.close()
 
-    def load_game(self):
-        # Define folder 
-        pgn_folder = Path("data/pgn")
-        file_path = pgn_folder / "MidwayThroughExample.pgn" # replace with incoming file path
+    # def load_game(self):
+    #     # Define folder 
+    #     pgn_folder = Path("data/pgn")
+    #     file_path = pgn_folder / "MidwayThroughExample.pgn" # replace with incoming file path
 
-        # open file of source pgn
-        with open(file_path) as pgn: 
-            # read pgn 
-            loaded_game = chess.pgn.read_game(pgn)
+    #     # open file of source pgn
+    #     with open(file_path) as pgn: 
+    #         # read pgn 
+    #         loaded_game = chess.pgn.read_game(pgn)
 
-            # iterate through moves and play them on the board
-            for move in loaded_game.mainline_moves():
-                self.game_state.board(move)
+    #         # iterate through moves and play them on the board
+    #         for move in loaded_game.mainline_moves():
+    #             self.game_state.board(move)
 
     
     def save_game(self):
-        current_save = chess.pgn.Game()
+        # current_save = chess.pgn.Game()
 
-        # save pgn in folder
-        new_pgn = open("/data/pgn", "w", encoding="utf-8")
-        exporter = chess.pgn.FileExporter(new_pgn)
-        current_save.accept(exporter)
+        # # save pgn in folder
+        # new_pgn = open("/data/pgn", "w", encoding="utf-8")
+        # exporter = chess.pgn.FileExporter(new_pgn)
+        # current_save.accept(exporter)
+        self.game_state.messages.append(f"Game saved")

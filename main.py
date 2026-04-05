@@ -55,13 +55,25 @@ def main():
                 # Sending actual clicks to controller logic
                 result = input_handler.process_event(event, controller)
 
-                # return to menu if game is done
-                if result == "MENU":
+                # check in-game buttons
+                ingameAction = board_ui.handle_event(event)
+
+                # # user wants to save game as pgn
+                if ingameAction == "SAVE":
+                    controller.save_game()
+                    
+
+                # user wants to return to menu
+                if ingameAction == "MENU":
                     
                     mode = "MENU"
                     # reset board for next game
                     game_state.reset()
                     break
+                
+                
+               
+
 
         if mode == "MENU":
             menu.draw()
