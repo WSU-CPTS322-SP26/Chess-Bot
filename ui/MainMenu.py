@@ -9,24 +9,24 @@ class MainMenu:
         self.background = pygame.image.load("assets/background/menu.jpg").convert()
         self.background = pygame.transform.scale(self.background, self.screen.get_size())
 
-        # Font
-        self.title_font = pygame.font.SysFont(None, 72)
-        self.button_font = pygame.font.SysFont(None, 44)
+        # Font from Google Fonts
+        self.title_font = pygame.font.Font("assets/fonts/Cinzel-Bold.ttf", 72)
+        self.button_font = pygame.font.Font("assets/fonts/Cinzel-Regular.ttf", 36)
 
         # Layout
         w, h = self.screen.get_size()
-        bw, bh = 360, 70
+        bw, bh = 470, 70
         start_x = 10 
 
         self.buttons = [
             ("User vs User", pygame.Rect(0, 0, bw, bh)),
-            ("User vs Stockfish bot",  pygame.Rect(0, 0, bw, bh)),
-            ("User vs Homemade bot", pygame.Rect(0, 0, bw, bh)),
+            ("User vs Stockfish Bot",  pygame.Rect(0, 0, bw, bh)),
+            ("User vs Homemade Bot", pygame.Rect(0, 0, bw, bh)),
             ("Quit",         pygame.Rect(0, 0, bw, bh)),
         ]
 
         # button placement
-        start_y = 110
+        start_y = 130
         spacing = 95
         for i, (_, rect) in enumerate(self.buttons):
             rect.topleft = (start_x, start_y + i * spacing)
@@ -41,9 +41,9 @@ class MainMenu:
                 if rect.collidepoint(event.pos):
                     if label == "User vs User":
                         return "PVP"
-                    if label == "User vs Bot - Stockfish":
+                    if label == "User vs Stockfish Bot":
                         return "PVBS"
-                    if label == "User vs Bot - Homemade":
+                    if label == "User vs Homemade Bot":
                         return "PVBH"
                     if label == "Quit":
                         return "QUIT"
@@ -68,7 +68,7 @@ class MainMenu:
 
             # To show hovering
             if rect.collidepoint(mouse_pos):
-                color = (100, 100, 120, 180)  # lighter + more visible
+                color = (130, 130, 150, 200)  # lighter + more visible
             else:
                 color = (80, 80, 80, 140)     # translucent default
 
