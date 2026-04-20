@@ -20,8 +20,8 @@ class BoardDisplay:
         self.panel_color = (40, 40, 40)
 
         # Fonts
-        self.font = pygame.font.SysFont("Arial", 24)
-        self.button_font = pygame.font.SysFont(None, 32) 
+        self.font = pygame.font.Font("assets/fonts/Cinzel-Regular.ttf", 24)
+        self.button_font = pygame.font.Font("assets/fonts/Cinzel-Regular.ttf", 28) 
 
         # button constants
         w, h = self.screen.get_size()
@@ -143,18 +143,68 @@ class BoardDisplay:
             (self.panel_x, 0, self.panel_width, self.squareSize * self.boardSize)
         )
         
-        turn = "White's" if self.game_state.board.turn else "Black's"
-        text = f"{turn} turn"
-        text_surface = self.font.render(text, True, (255, 255, 255))
-        self.screen.blit(text_surface, (self.panel_x + 20, 20))
-        
+        panel_x = self.panel_x
+
+        # Section positions
+        turn_y = 20
+        move_y = 120
+        msg_y  = 220
+
+        # -------------------------
+        # TURN SECTION
+        # -------------------------
+        title_surface = self.font.render("TURN", True, (200, 200, 200))
+        self.screen.blit(title_surface, (panel_x + 20, turn_y))
+
+        turn = "White" if self.game_state.board.turn else "Black"
+        turn_text = f"{turn}'s Turn"
+        turn_surface = self.font.render(turn_text, True, (255, 255, 255))
+        self.screen.blit(turn_surface, (panel_x + 20, turn_y + 30))
+
+        # Divider line
+        pygame.draw.line(
+            self.screen,
+            (120, 120, 120),
+            (panel_x + 10, turn_y + 60),
+            (panel_x + self.panel_width - 10, turn_y + 60),
+            1
+        )
+
+        # -------------------------
+        # LAST MOVE SECTION
+        # -------------------------
+        title_surface = self.font.render("LAST MOVE", True, (200, 200, 200))
+        self.screen.blit(title_surface, (panel_x + 20, move_y))
+
+        if self.game_state.board.move_stack:
+            last_move = self.game_state.board.peek()
+            move_text = last_move.uci()
+        else:
+            move_text = "None"
+
+        move_surface = self.font.render(move_text, True, (255, 255, 255))
+        self.screen.blit(move_surface, (panel_x + 20, move_y + 30))
+
+        # Divider line
+        pygame.draw.line(
+            self.screen,
+            (120, 120, 120),
+            (panel_x + 10, move_y + 60),
+            (panel_x + self.panel_width - 10, move_y + 60),
+            1
+        )
+
+        # -------------------------
+        # MESSAGES SECTION
+        # -------------------------
         MAX_MESSAGES = 1
-        y_offset = 60
+        y_offset = msg_y
+
         messages_to_draw = self.game_state.messages[-MAX_MESSAGES:]
         for msg in messages_to_draw:
             text_surface = self.font.render(msg, True, (255, 255, 255))
-            self.screen.blit(text_surface, (self.panel_x + 20, y_offset))
-            y_offset = y_offset + 30
+            self.screen.blit(text_surface, (panel_x + 20, y_offset))
+            y_offset += 30
 
         # buttons drawing
         for label, rect in self.buttons:

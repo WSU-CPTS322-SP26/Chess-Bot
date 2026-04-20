@@ -50,7 +50,7 @@ class GameController:
             # Check if it's in board.legal_moves
             if move in board.legal_moves:
                 board.push(move)
-                self.game_state.messages.append(f"Move Executed: {move.uci()}")
+                # self.game_state.messages.append(f"Move Executed: {move.uci()}")
                 
                 # update in Game node (PGN mainline moves)
                 node = self.game.add_variation(chess.Move.from_uci(move.uci()))
