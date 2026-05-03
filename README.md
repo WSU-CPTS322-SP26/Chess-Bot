@@ -86,7 +86,7 @@ Sprint 1: Isaac Shim - https://youtu.be/Nu-bxFxZKjs
 
 Sprint 2: Lyndell Martin, Johnny Huang - https://youtu.be/6S5otcZksos
 
-Sprint 3: 
+Sprint 3: https://youtu.be/tOqPxBqDZjs
 
 ## License
 
