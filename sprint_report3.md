@@ -1,4 +1,4 @@
-# Sprint x Report (8/26/21 - 9/24/2021)
+# Sprint 3 Report (4/05/2026 - 5/02/2026)
 
 ## What's New (User Facing)
  * Feature 1 or Bug Fix 1
@@ -47,8 +47,8 @@ Please review the following code files, which were actively developed during thi
  
 ## Retrospective Summary
 Here's what went well:
-  * Item 1
-  * Item 2
+  * PyTorchBot had significant improvements
+  * Chess games can now flow smoothly without interruptions
   * Item x
  
 Here's what we'd like to improve:
