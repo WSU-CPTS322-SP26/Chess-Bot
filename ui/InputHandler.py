@@ -20,7 +20,7 @@ class InputHandler:
             square = self.board_display.pixel_to_square(event.pos)
             rank = self.board_display.pixel_to_square(event.pos)
             if square is not None:
-                controller.handle_square_click(square) ############ , rank
+                controller.handle_square_click(square)
             return None
 
         # check for panel button events
