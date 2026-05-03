@@ -22,7 +22,7 @@ class GameController:
             self.bot = StockfishBot() # create the bot instance if it is selected
             self.game.headers["Event"] = "Player Versus Stockfish Bot"
         elif self.mode == "PVBH":
-            self.bot = PyTorchBot(model_path="../model.pt")
+            self.bot = PyTorchBot(value_model_path="../value_model.pt", policy_model_path="../policy_model.pt") # now call both policy and value models
             self.game.headers["Event"] = "Player Versus Homemade Bot"
         
 
