@@ -22,14 +22,14 @@ Before installing and running this project, ensure you have the following instal
 - pip (Python package manager)
 - git
 - A system capable of running PyGame
+- Stockfish Bot (Optional Stockfish Bot gamemode)
 
 ### Add-ons
 
 This project currently uses the following third-party libraries
 - pygame: Used for rendering UI, handling window creation, drawing chess board, and processing user input
 - python-chess: Used for chess board representation, legal move generation, move validation, and detection of game-end
-
-Note: Machine learning libraries (e.g., PyTorch) are planned for later sprints but are not yet required to run current prototype.
+- PyTorch: Used for machine learning and training for chess bot decision making
 
 ### Installation Steps
 
@@ -50,19 +50,20 @@ Current Functionality
 - Graphical window rendered using PyGame
 - Chess board rendered as an 8x8 grid with alternating colors
 - Clean separation between UI rendering and application initialization
-- Chess bot game modes play
+- Full chess bot game modes playability
 
 
 ## Known Problems
-
-TODO: Describe any known issues, bugs, odd behaviors or code smells. 
-Provide steps to reproduce the problem and/or name a file or a function where the problem lives.
 
 When mapping board squares to chess objects:
 
 The pygame library starts its origin in the top left of the board. This created a weird interaction during the initial implementation because squares were being designated from the wrong parts of the board. After understanding this nuance, a small change (rank = 7 - row ) flipped the board vertically allowing the board to start in the correct position when creating square objects. We will have to be mindful of this small detail if we decide to manipulate this implementation in some way.
 
-When playing a game, pawn promotion will be considered an invalid move and will not allow piece promotion
+
+When trying to use the save game button, the game will store as an improper PGN file and will not be able to be loaded. This is due to an improper conversion of events into string.
+
+
+Instead of allowing the user to select certain material to be used, a pawn promotion will automatically assign a queen.
 
 
 ## Contributing
@@ -75,7 +76,7 @@ When playing a game, pawn promotion will be considered an invalid move and will 
 
 ## Additional Documentation
 
-Sprint Report 2: sprint_report2.md
+Sprint Report 3: sprint_report3.md
 
 Chess pieces recieved from: https://commons.wikimedia.org/wiki/File:Chess_Pieces_Sprite.svg
 
@@ -84,6 +85,8 @@ Demo Video
 Sprint 1: Isaac Shim - https://youtu.be/Nu-bxFxZKjs
 
 Sprint 2: Lyndell Martin, Johnny Huang - https://youtu.be/6S5otcZksos
+
+Sprint 3: 
 
 ## License
 

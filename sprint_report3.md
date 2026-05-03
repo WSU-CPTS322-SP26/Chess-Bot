@@ -7,11 +7,11 @@
 
 
 ## Work Summary (Developer Facing)
-Added two bots: our homemade PyTorch bot and Stockfish Bot and added load and save game via PGN files with a dedicated folder 
-with PGNs. 
+Added two bots: our homemade PyTorch bot and Stockfish Bot and added load via PGN files with a dedicated folder 
+with PGNs. Fixed chess logic related bugs for a continuous game flow.
 
 ## Unfinished Work
-N/A
+Save game was not a necessary implementation during this sprint and was not included.
 
 ## Completed Issues/User Stories
  * https://github.com/WSU-CPTS322-SP26/Chess-Bot/issues/16
@@ -45,7 +45,7 @@ Please review the following code files, which were actively developed during thi
 ## Retrospective Summary
 Here's what went well:
   * UI was updated with QOL improvements
-  * Save game successfully implemented 
+  * Pawn promotion successfully implemented 
   * Chess app is fully able to be played with a developed system and UI
  
 Here's what we'd like to improve:
