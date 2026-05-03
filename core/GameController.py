@@ -47,6 +47,18 @@ class GameController:
             # Create a move object from the first click to the second click
             move = chess.Move(self.selected_square, square)
             
+            # Check for a pawn promotion move
+
+            piece = board.piece_at(self.selected_square)
+            square.ra
+            # check for pawn promotion
+            if piece is not None:
+                if piece.piece_type == chess.PAWN:
+                    if self.selected_square == chess.A7 and square == chess.A8:
+                        # Promote pawn to queen
+                        move.promotion = chess.QUEEN
+
+
             # Check if it's in board.legal_moves
             if move in board.legal_moves:
                 board.push(move)
