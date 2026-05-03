@@ -73,10 +73,6 @@ def main():
                     # reset board for next game
                     game_state.reset()
                     break
-                
-                
-               
-
 
         if mode == "MENU":
             menu.draw()
