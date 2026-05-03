@@ -56,8 +56,6 @@ class GameController:
             # check for pawn promotion
             if piece is not None:
                 if piece.piece_type == chess.PAWN:
-                    print(chess.square_rank(self.selected_square))
-                    print(chess.square_rank(square))
                     if (chess.square_rank(self.selected_square) == 6 and chess.square_rank(square) == 7) or (chess.square_rank(self.selected_square) == 1 and chess.square_rank(square) == 0): # 0 is the first rank
                         # Promote pawn to queen
                         move.promotion = chess.QUEEN
