@@ -225,3 +225,16 @@ class BoardDisplay:
             return chess.square(file, rank)
         return None
     
+    def pixel_to_rank(self, pos):
+        x, y = pos
+        column = x // self.squareSize
+        row = y // self.squareSize
+
+        # Check if the click is actually on the 8x8 board
+        if 0 <= column < 8 and 0 <= row < 8:
+            # Pygame (0,0) is TOP-LEFT. 
+            # Chess Rank 0 is BOTTOM. We have to flip the row.
+            rank = 7 - row 
+            return rank
+        return None
+    

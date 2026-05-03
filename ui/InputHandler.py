@@ -18,8 +18,9 @@ class InputHandler:
         # Mouse left click -> square
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             square = self.board_display.pixel_to_square(event.pos)
+            rank = self.board_display.pixel_to_square(event.pos)
             if square is not None:
-                controller.handle_square_click(square)
+                controller.handle_square_click(square, rank)
             return None
 
         # check for panel button events

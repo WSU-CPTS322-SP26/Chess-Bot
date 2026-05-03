@@ -14,6 +14,7 @@ class GameController:
         self.game = chess.pgn.Game()
 
         self.selected_square = None
+        self.selected_rank = None
 
         self.game.headers["Event"] = "Player Versus Player"
 
@@ -26,7 +27,7 @@ class GameController:
             self.game.headers["Event"] = "Player Versus Homemade Bot"
         
 
-    def handle_square_click(self, square: chess.Square):
+    def handle_square_click(self, square: chess.Square, rank: int):
         board = self.game_state.board
 
         # no human input on bot's turn
@@ -50,7 +51,7 @@ class GameController:
             # Check for a pawn promotion move
 
             piece = board.piece_at(self.selected_square)
-            square.ra
+            
             # check for pawn promotion
             if piece is not None:
                 if piece.piece_type == chess.PAWN:
