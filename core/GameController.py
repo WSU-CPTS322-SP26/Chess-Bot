@@ -14,7 +14,6 @@ class GameController:
         self.game = chess.pgn.Game()
 
         self.selected_square = None
-        ############ self.selected_rank = None
 
         self.game.headers["Event"] = "Player Versus Player"
 
@@ -27,7 +26,7 @@ class GameController:
             self.game.headers["Event"] = "Player Versus Homemade Bot"
         
 
-    def handle_square_click(self, square: chess.Square): ############ , rank: int
+    def handle_square_click(self, square: chess.Square): 
         board = self.game_state.board
 
         # no human input on bot's turn
@@ -39,7 +38,6 @@ class GameController:
             # Only allow selection if there is a piece and it's that color's turn
             if piece and piece.color == board.turn:
                 self.selected_square = square
-                ############ self.selected_rank = rank
                 self.game_state.messages.append(f"Selected: {chess.square_name(square)}")
             else:
                 self.game_state.messages.append("Select a piece of your color.")
@@ -56,8 +54,6 @@ class GameController:
             # check for pawn promotion
             if piece is not None:
                 if piece.piece_type == chess.PAWN:
-                    print(chess.square_rank(self.selected_square))
-                    print(chess.square_rank(square))
                     if (chess.square_rank(self.selected_square) == 6 and chess.square_rank(square) == 7) or (chess.square_rank(self.selected_square) == 1 and chess.square_rank(square) == 0): # 0 is the first rank
                         # Promote pawn to queen
                         move.promotion = chess.QUEEN
